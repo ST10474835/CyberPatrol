@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace CyberPatrolGUI
 {
     internal class MemoryStore
-   
-        {
-            public string UserName { get; set; }
+    // Stores user name and topics discussed during the session
+    {
+        public string UserName { get; set; }
             public string FavouriteTopic { get; set; }
             public string LastTopic { get; set; }
             public List<string> TopicsDiscussed { get; set; } = new List<string>();
