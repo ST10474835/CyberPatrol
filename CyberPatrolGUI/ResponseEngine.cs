@@ -12,8 +12,8 @@ namespace CyberPatrolGUI
             private static Random random = new Random();
             private static MemoryStore memory;
 
-            // Random response lists
-            private static List<string> phishingResponses = new List<string>
+        // // Uses Lists and Dictionary for keyword and random responses
+        private static List<string> phishingResponses = new List<string>
         {
             "Be cautious of emails asking for personal information. " +
             "Scammers often disguise themselves as trusted organisations.",
