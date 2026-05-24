@@ -99,8 +99,8 @@ namespace CyberPatrolGUI
                 btnSend.Text = "Send ▶";
             }
 
-            // ── Play YOUR recorded voice ──────────────────────────
-            private void PlayVoiceGreeting()
+        // Plays own recorded voice greeting on startup
+        private void PlayVoiceGreeting()
             {
                 try
                 {
