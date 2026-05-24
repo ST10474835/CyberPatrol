@@ -45,7 +45,7 @@
             this.lblAscii.Text = resources.GetString("lblAscii.Text");
             this.lblAscii.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // picProfile
+            // CyberBot profile picture displayed on the form
             // 
             this.picProfile.BackColor = System.Drawing.Color.Black;
             this.picProfile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
