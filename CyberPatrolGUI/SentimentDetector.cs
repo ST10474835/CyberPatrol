@@ -37,8 +37,8 @@ namespace CyberPatrolGUI
 
                 return "neutral";
             }
-
-            public static string GetSentimentPrefix(string sentiment)
+        // Detects worried, curious, frustrated and positive sentiments based on keywords in the user's input. This is a very basic approach and can be improved with more sophisticated NLP techniques, but it serves the purpose for this application.
+        public static string GetSentimentPrefix(string sentiment)
             {
                 switch (sentiment)
                 {
