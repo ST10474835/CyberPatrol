@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace CyberPatrolGUI
 {
+    // Part 3 complete — Task Assistant Quiz NLP and Activity Log integrated
     public partial class Form1 : Form
     {
             private MemoryStore memory = new MemoryStore();
