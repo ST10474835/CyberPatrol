@@ -193,7 +193,7 @@ namespace CyberPatrolGUI
                 }
 
                 // ── Add task NLP detection ────────────────────────
-                if (input.Contains("add task") ||
+                if (input.Contains("add task") || // Task Assistant — allows users to add view complete and delete tasks
                     input.Contains("new task") ||
                     input.Contains("create task") ||
                     input.Contains("add a task") ||
