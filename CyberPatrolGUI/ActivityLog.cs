@@ -41,7 +41,7 @@ namespace CyberPatrolGUI
 
             public static void Clear()
             {
-                log.Clear();
+            log.Clear();
             }
         }
     }
