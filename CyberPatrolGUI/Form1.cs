@@ -14,8 +14,6 @@ namespace CyberPatrolGUI
 {
     public partial class Form1 : Form
     {
-    
-        
             private MemoryStore memory = new MemoryStore();
             private bool nameEntered = false;
 
@@ -27,7 +25,6 @@ namespace CyberPatrolGUI
                 ShowWelcomeMessage();
             }
 
-            // ── Theme matching CyberPatrol Part 1 style ──────────
             private void ApplyTheme()
             {
                 this.BackColor = Color.Black;
@@ -35,104 +32,89 @@ namespace CyberPatrolGUI
                 this.Size = new Size(950, 780);
                 this.MinimumSize = new Size(950, 780);
 
-                // ASCII label
                 lblAscii.ForeColor = Color.Cyan;
                 lblAscii.BackColor = Color.Black;
-                lblAscii.Font = new Font(
-                    "Consolas", 7, FontStyle.Bold);
+                lblAscii.Font = new Font("Consolas", 7,
+                    FontStyle.Bold);
 
-                // Title label
                 lblTitle.ForeColor = Color.Cyan;
                 lblTitle.BackColor = Color.FromArgb(10, 10, 30);
-                lblTitle.Font = new Font(
-                    "Consolas", 11, FontStyle.Bold);
+                lblTitle.Font = new Font("Consolas", 11,
+                    FontStyle.Bold);
                 lblTitle.Text =
                     "  🔒 CYBERBOT SA — CYBERPATROL  |  " +
                     "Cybersecurity Awareness Assistant";
 
-                // Profile picture box
                 picProfile.Size = new Size(80, 80);
                 picProfile.SizeMode = PictureBoxSizeMode.Zoom;
                 picProfile.BackColor = Color.Black;
                 picProfile.BorderStyle = BorderStyle.FixedSingle;
 
-                // Load profile picture from project folder
                 try
                 {
-                    string imgPath = Path.Combine(
-                        Application.StartupPath, "cyberbot.png");
+                    string imgPath =
+                        @"C:\Users\Student\source\repos\" +
+                        @"CyberPatrol\CyberPatrolGUI\cyberbot.png";
                     if (File.Exists(@"C:\Users\Student\source\repos\CyberPatrol\CyberPatrolGUI\cyberbot.png.png"))
-                    {
                         picProfile.Image = Image.FromFile(@"C:\Users\Student\source\repos\CyberPatrol\CyberPatrolGUI\cyberbot.png.png");
-                    }
                 }
                 catch { }
 
-                // Bot name label next to picture
                 lblBotName.ForeColor = Color.Cyan;
                 lblBotName.BackColor = Color.FromArgb(10, 10, 30);
-                lblBotName.Font = new Font(
-                    "Consolas", 10, FontStyle.Bold);
+                lblBotName.Font = new Font("Consolas", 10,
+                    FontStyle.Bold);
                 lblBotName.Text =
                     "  CyberBot SA\n  Cybersecurity Assistant";
 
-                // Chat display
                 rtbChat.BackColor = Color.Black;
                 rtbChat.ForeColor = Color.Cyan;
                 rtbChat.Font = new Font("Consolas", 11);
                 rtbChat.ReadOnly = true;
                 rtbChat.BorderStyle = BorderStyle.FixedSingle;
 
-                // Input box
                 txtInput.BackColor = Color.FromArgb(15, 15, 30);
                 txtInput.ForeColor = Color.White;
                 txtInput.Font = new Font("Consolas", 11);
                 txtInput.BorderStyle = BorderStyle.FixedSingle;
 
-                // Send button
                 btnSend.BackColor = Color.DarkCyan;
                 btnSend.ForeColor = Color.White;
-                btnSend.Font = new Font(
-                    "Consolas", 11, FontStyle.Bold);
+                btnSend.Font = new Font("Consolas", 11,
+                    FontStyle.Bold);
                 btnSend.FlatStyle = FlatStyle.Flat;
                 btnSend.FlatAppearance.BorderColor = Color.Cyan;
                 btnSend.Text = "Send ▶";
             }
 
-        // Plays own recorded voice greeting on startup
-        private void PlayVoiceGreeting()
+            private void PlayVoiceGreeting()
             {
                 try
                 {
-                    // Looks for greeting.wav in the same folder
-                    // as your .exe file
-                    string path = Path.Combine(
-                        Application.StartupPath, "CYBERPATROL");
-
-                    if (File.Exists(@"C:\Users\Student\source\repos\CyberPatrol\CyberPatrol\CYBERPATROL .wav"))
+                    string path =
+                        @"C:\Users\Student\source\repos\" +
+                        @"CyberPatrol\CyberPatrol\CYBERPATROL .wav";
+                    if (File.Exists(path))
                     {
-                        SoundPlayer player = new SoundPlayer(@"C:\Users\Student\source\repos\CyberPatrol\CyberPatrol\CYBERPATROL .wav");
+                        SoundPlayer player = new SoundPlayer(path);
                         player.Play();
-                    }
-                    else
-                    {
-                        // Show message if file not found
-                        AppendWarning(
-                            "Voice greeting file not found.\n" +
-                            "Please add CYBERPATROL to the " +
-                            "project folder.");
                     }
                 }
                 catch { }
             }
 
-            // ── Welcome message matching Part 1 style ────────────
             private void ShowWelcomeMessage()
             {
                 AppendDivider();
                 AppendBot(
-                    "  ℹ  Type 'help' at any time to see " +
-                    "available topics.\n" +
+                    "  ℹ  Type 'help' to see all available " +
+                    "features.\n" +
+                    "  ℹ  Type 'start quiz' to test your " +
+                    "cybersecurity knowledge.\n" +
+                    "  ℹ  Type 'add task' to manage your " +
+                    "cybersecurity tasks.\n" +
+                    "  ℹ  Type 'show activity log' to see " +
+                    "recent actions.\n" +
                     "  ℹ  Type 'exit' to end the session.",
                     Color.Cyan);
                 AppendDivider();
@@ -165,13 +147,12 @@ namespace CyberPatrolGUI
                 {
                     AppendWarning(
                         "Input cannot be empty. " +
-                        "Please type a question.");
+                        "Please type something.");
                     return;
                 }
 
                 txtInput.Clear();
 
-                // First input is the user's name
                 if (!nameEntered)
                 {
                     memory.UserName = input;
@@ -182,18 +163,34 @@ namespace CyberPatrolGUI
                     AppendDivider();
                     AppendBot(
                         "  Hello, " + memory.UserName +
-                        "! Great to have you here.",
+                        "! Great to have you here. 🎉",
                         Color.LightGreen);
                     AppendBot(
                         "  I am CyberBot SA, your cybersecurity" +
                         " awareness assistant.",
                         Color.LightGreen);
                     AppendBot(
-                        "  I am here to help you stay safe online.\n" +
-                        "  Type 'help' to see what I can assist " +
-                        "you with.",
+                        "  Type 'help' to see everything I can " +
+                        "do for you!",
                         Color.LightGreen);
+
+                    // Check DB connection
+                    if (DatabaseHelper.TestConnection())
+                        AppendBot(
+                            "  ✔  Task database connected " +
+                            "successfully!",
+                            Color.LightGreen);
+                    else
+                        AppendBot(
+                            "  ⚠  Database not connected. Tasks " +
+                            "will not be saved.\n" +
+                            "  Please check MySQL is running.",
+                            Color.OrangeRed);
+
                     AppendDivider();
+                    ActivityLog.AddEntry(
+                        "Session started for user: " +
+                        memory.UserName);
                     return;
                 }
 
@@ -201,6 +198,9 @@ namespace CyberPatrolGUI
 
                 if (input.ToLower() == "exit")
                 {
+                    ActivityLog.AddEntry(
+                        "Session ended for user: " +
+                        memory.UserName);
                     AppendBot(
                         "  Goodbye, " + memory.UserName +
                         "! Stay safe online. 🔒\n" +
@@ -220,11 +220,10 @@ namespace CyberPatrolGUI
                 AppendDivider();
             }
 
-            // ── Message helpers ───────────────────────────────────
             private void AppendBot(string message, Color color)
             {
                 rtbChat.SelectionStart = rtbChat.TextLength;
-                rtbChat.SelectionLength = 2;
+                rtbChat.SelectionLength = 0;
                 rtbChat.SelectionColor = Color.DarkGray;
                 rtbChat.AppendText("\n  [CyberBot SA]\n");
                 rtbChat.SelectionColor = color;
@@ -235,7 +234,7 @@ namespace CyberPatrolGUI
             private void AppendUser(string message)
             {
                 rtbChat.SelectionStart = rtbChat.TextLength;
-                rtbChat.SelectionLength = 4;
+                rtbChat.SelectionLength = 0;
                 rtbChat.SelectionColor = Color.DarkGray;
                 rtbChat.AppendText(
                     "\n  [" +
@@ -267,6 +266,9 @@ namespace CyberPatrolGUI
             }
         }
     }
+
+        
+    
 
 
     
